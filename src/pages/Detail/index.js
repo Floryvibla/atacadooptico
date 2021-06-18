@@ -11,15 +11,14 @@ function Detail(){
     const cart= JSON.parse(localStorage.getItem('cart'))
 
     const [items, setItems] = useState(cart)
-    const [qtd, setQtd] = useState(cart)
 
     const plus= (index) => {
         let newList= [...items]
         let price= cart[index].price
         newList[index].price = newList[index].price + price
+
         let newQtd= [...items]
         newQtd[index].quatidade = newQtd[index].quatidade + 1
-        setQtd(newQtd)
         setItems(newList)
     }
     const moins= (index) => {
@@ -35,7 +34,6 @@ function Detail(){
 
         let newQtd= [...items]
         newQtd[index].quatidade = newQtd[index].quatidade - 1
-        setQtd(newQtd)
         setItems(newList)
     }
 
@@ -78,16 +76,19 @@ function Detail(){
                 <Header/>
             </div>
             <div className="container2">
-                {cards}
+                {items.length > 0 ? {cards} : <h1>Seu carrinho está vazio</h1>}
             </div>
-            <div>
-             <BarCart
-                title="Finalizar a compra"
-                img= {items.map((i) => i.image)}
-                price= {price}
-                item= {cart.length}
-             />
-            </div>
+
+            {items.length > 0 &&
+                <div>
+                    <BarCart
+                        title="Finalizar a compra"
+                        img= {items.map((i) => i.image)}
+                        price= {price}
+                        item= {cart.length}
+                    />
+                </div>
+            }
         </div>
     )
 }
