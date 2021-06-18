@@ -76,7 +76,7 @@ function Detail(){
                 <Header/>
             </div>
             <div className="container2">
-                {items.length > 0 ? {cards} : <h1>Seu carrinho está vazio</h1>}
+                {items.length > 0 ? cards : <h1>Seu carrinho está vazio</h1>}
             </div>
 
             {items.length > 0 &&
