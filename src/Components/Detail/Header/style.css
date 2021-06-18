@@ -1,0 +1,20 @@
+
+.titleDetail{
+    font-size: 1.4em;
+    text-shadow:  0 0 20px rgba(0, 0, 0, 0.158);
+}
+.linkDetail{
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.9em;
+    width: 16%;
+    height: 45px;
+    background-color: rgba(250, 235, 215, 0.034);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.158);
+    border-radius: 10px;
+    margin-right: 20%;
+    color: black;
+}
+
