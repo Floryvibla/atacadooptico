@@ -1,14 +1,15 @@
 import React,{useState, useEffect} from 'react'
-import {useHistory} from 'react-router-dom'
+// import {useHistory} from 'react-router-dom'
 
 
 import './style.css'
 
-import Db from '../../DB'
-import Title from '../../Components/Home/Title/'
-import Search from '../../Components/Home/Search/'
-import Card from '../../Components/Home/Card/' 
-import BarCart from '../../Components/Home/AddCart/'
+// import Db from '../../DB'
+import Carossel from '../../Components/Home/Carossel' 
+// import BarCart from '../../Components/Home/AddCart/'
+import Banner from '../../Components/Home/Banner/'
+import Categories from '../../Components/Categories/'
+import Footer from '../../Components/Footer/'
 
 
 
@@ -16,11 +17,11 @@ const Home = () => {
 
     
 
-    const [text, setText] = useState("")
-    const [product] = useState(Db)
+    // const [text] = useState("")
+    // const [product] = useState(Db)
     const [cart, setCart] = useState([])
 
-    const history= useHistory()
+    // const history= useHistory()
 
     useEffect(() => {
         const inicialCart= JSON.parse(localStorage.getItem('cart'))
@@ -33,62 +34,55 @@ const Home = () => {
         localStorage.setItem('cart', JSON.stringify(cart))
     },[cart])
 
-    const addCart= (index) =>{
-        let newList= [...product]
-        setCart([...cart, newList[index]])
-    }
+    // const addCart= (index) =>{
+    //     let newList= [...product]
+    //     setCart([...cart, newList[index]])
+    // }
 
-    const price= cart.reduce((a, b) => {
-        return a + b.price
-    }, 0)
+    // const price= cart.reduce((a, b) => {
+    //     return a + b.price
+    // }, 0)
 
-    const getCart= () => {
-        history.replace('/detail')
-    }
+    // const getCart= () => {
+    //     history.replace('/detail')
+    // }
 
 
-    const filterSearch= product.filter(i => {
-        return i.categorie.toLowerCase().includes(text.toLowerCase())
-    })
+    // const filterSearch= product.filter(i => {
+    //     return i.categorie.toLowerCase().includes(text.toLowerCase())
+    // })
 
     
 
 
 
-    const cards= filterSearch.map((i, index) =>{
+    // const cards= filterSearch.map((i, index) =>{
         
-        return(
-            <Card
-                key= {index}
-                link= "/detail"
-                img= {i.image}
-                imgAlt= {i.name}
-                name= {i.name}
-                price= {i.price}
-                categorie= {i.categorie}
-                addCart= "+"
-                devise="R$"
-                cart= {() => addCart(index)}
-            />
-        )
-    })
+    //     return(
+    //         <Carossel/>
+    //     )
+    // })
 
     return (
         <div className="Home">
-            <Title title= "Black in Control" />
-            <div className= "search">
-                <Search 
-                    placeholder= "Pesquisar..."
-                    value={text}
-                    onChangeText= {(e) => setText(e.target.value)}
-                />
+            <div className="Categorie" style={{marginBottom: 10}}>
+                <Categories/>
             </div>
-            {filterSearch < 1 ? `Sem resultados` : ""}
             
-            <div className="Card">
-                {cards}
+            <div className= "banner">
+                <Banner/>
             </div>
-            {cart.length > 0 &&
+            
+            <div className="Carossel">
+                <Carossel/>
+                <Carossel title='Melhores Avaliações' />
+            </div>
+
+            <div className= "footer">
+                <Footer/>
+            </div>
+
+            {/* {cart.length > 0 &&
                 <div className="BarCart">
                     <BarCart 
                         title= "Ver carrinho"
@@ -99,7 +93,7 @@ const Home = () => {
                         onClickBtn={() => getCart()}
                     />
                 </div>
-            }
+            } */}
         </div>
     )
 }

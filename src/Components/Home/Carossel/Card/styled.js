@@ -3,20 +3,42 @@ import styled from 'styled-components'
 const CardArea= styled.div`
     display: flex;
     flex-direction: column;
-    width: 40%;
-    height: 250px;
-    background-color: rgba(246, 248, 247, 0.678);
-    margin-bottom: 10%;
-    border-radius: 5px;
-    box-shadow: 0px 0px 20px rgba(19, 16, 16, 0.178);
+    width: 190px;
+    height: 300px;
+    background-color: rgba(246, 248, 247);
+    box-shadow: 0px 0px 5px rgba(19, 16, 16, 0.178);
+    border-radius: 10px;
+    margin: 0% 1%;
+    cursor: pointer;
+    transition: all 1s;
+
+    &:hover{
+        box-shadow: 0px 0px 20px #00000079;
+    }
+
+    &:active{
+        background-color: rgba(19, 16, 16, 0.178);
+        cursor: grabbing;
+    }
 `
-const ImgArea= styled.img`
+const ImgArea= styled.div`
     width: 100%;
-    height: 150px;
-    object-fit: cover;
+    flex: 2;
+    border-radius: 10px;
+    background-image: url(${props => props.img});
+    background-color: red;
+    background-size: cover;
+
+    &:hover{
+        box-shadow: inset 0px 0px 50px #00000079;
+    }
+    &:active{
+        box-shadow: inset 0px 0px 200px #000000;
+    }
 `
 const Container= styled.div`
     display: flex;
+    flex: 1;
     flex-direction: column;
     max-width: 95%;
     height: 100%;

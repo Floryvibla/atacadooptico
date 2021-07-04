@@ -7,8 +7,8 @@ const CardProduct = (props) => {
         <CardArea className="Div-CardProduct">
 
             <ImgArea 
-                src={props.img} 
-                alt= {props.imgAlt} 
+                img={props.images} 
+                // alt= {props.imgAlt} 
                 className="Div-CardProduct-img"
                 onClick={props.cart}
             />
@@ -24,14 +24,14 @@ const CardProduct = (props) => {
 
                 <Wrapper className="Div-CardProduct-wrapper">
                     <PriceArea className="Div-CardProduct-price">
-                        {props.devise} {parseFloat(props.price).toFixed(2)}
+                        {props.devise ?? 'R$'} {parseFloat(props.price).toFixed(2)}
                     </PriceArea>
 
                     <BtnArea 
                         className="Div-CardProduct-btnAdd" 
                         onClick={props.cart}>
 
-                        {props.addCart}
+                        {props.addCart ?? '+'}
                     </BtnArea>
                 </Wrapper>
             </Container>
